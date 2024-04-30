@@ -60,3 +60,21 @@ app.delete("/index/:id", async (req, res)=>{
     await VideoGame.findByIdAndDelete(req.params.id);
     res.redirect("/index");
 })
+    //Edit Video Game Show Page
+app.get("/index/:id/edit", async (req, res) =>{
+    const foundVideoGame = await VideoGame.findById(req.params.id)
+    res.render("edit.ejs", {
+        foundVideoGame
+    })
+})
+
+    //Edit Video Game Database
+app.put("/index/:id", async (req, res)=>{
+    if(req.body.status === "on"){
+        req.body.status = true;
+    }else{
+        req.body.status = false;
+    }
+    await VideoGame.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect(`/index/${req.params.id}`);
+})

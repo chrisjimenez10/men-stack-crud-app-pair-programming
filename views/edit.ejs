@@ -6,6 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <nav>
+        <a href="/index/<%= foundVideoGame._id %>">Back to Game</a>
+    </nav>
+    <h1>Edit Video Game</h1>
+    <form action="/index/<%= foundVideoGame._id %>?_method=PUT" method="POST">
+        <label>Title:</label>
+        <input type="text" name="title" required value="<%= foundVideoGame.title %>" />
+        <label>Platform:</label>
+        <input type="text" name="platform" required value="<%= foundVideoGame.platform %>" />
+        <label>Genre:</label>
+        <input type="text" name="genre" required value="<%= foundVideoGame.genre %>" />
+        <label>Release:</label>
+        <input type="number" name="release" required value="<%= foundVideoGame.release %>" />
+        <label>Publisher:</label>
+        <input type="text" name="publisher" required value="<%= foundVideoGame.publisher %>" />
+        <label>Rating:</label>
+        <input type="number" name="rating" required min="1" max="100" value="<%= foundVideoGame.rating %>" />
+        <label>Completion Status:</label>
+        <input type="checkbox" name="status" <%= foundVideoGame.status ? "checked" : "" %> />
+        <button type="submit">Edit</button>
+    </form>
 </body>
 </html>

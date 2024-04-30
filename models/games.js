@@ -29,7 +29,6 @@ const VideoGameSchema = new mongoose.Schema({
     },
     status: {
         type: Boolean,
-        required: true,
     },
 });
 
