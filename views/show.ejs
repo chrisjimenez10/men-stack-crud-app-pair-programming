@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/show.css" />
 </head>
 <body>
     <nav>
-        <a href="/">Home Page</a>
-        <a href="/index">Game List</a>
+        <a class="link" href="/">Home Page</a>
+        <a class="link" href="/index">Game List</a>
     </nav>
-    <h1><%= foundGame.title %></h1>
+    <div id="title">
+        <h1><%= foundGame.title %></h1>
+    </div>
     <ul>
-        <li>Platform: <%= foundGame.platform %></li>
-        <li>Genre: <%= foundGame.genre %></li>
-        <li>Release: <%= foundGame.release %></li>
-        <li>Publisher: <%= foundGame.publisher %></li>
-        <li>Rating: <%= foundGame.rating %></li>
-        <li>Status: <%= foundGame.status === true ? "Completed" : "In Progress" %></li>
+        <li class="data">Platform: <%= foundGame.platform %></li>
+        <li class="data">Genre: <%= foundGame.genre %></li>
+        <li class="data">Release: <%= foundGame.release %></li>
+        <li class="data">Publisher: <%= foundGame.publisher %></li>
+        <li class="data">Rating: <%= foundGame.rating %></li>
+        <li class="data">Status: <%= foundGame.status === true ? "Completed" : "In Progress" %></li>
     </ul>
-    <form action="/index/<%= foundGame._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
-    <form action="/index/<%= foundGame._id %>/edit" method="GET">
-        <button type="submit">Edit</button>
-    </form>
+    <div class="buttons">
+        <form action="/index/<%= foundGame._id %>?_method=DELETE" method="POST">
+            <button class="link" type="submit">Delete</button>
+        </form>
+        <form action="/index/<%= foundGame._id %>/edit" method="GET">
+            <button class="link" type="submit">Edit</button>
+        </form>
+    </div>
 </body>
 </html>

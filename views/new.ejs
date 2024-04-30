@@ -4,25 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/show.css" />
 </head>
 <body>
-    <h1>Add Video Game</h1>
-    <form action="/index/new" method="POST">
-        <label>Title:</label>
-        <input type="text" name="title" required />
-        <label>Platform:</label>
-        <input type="text" name="platform" required />
-        <label>Genre:</label>
-        <input type="text" name="genre" required />
-        <label>Release:</label>
-        <input type="number" name="release" required />
-        <label>Publisher:</label>
-        <input type="text" name="publisher" required />
-        <label>Rating:</label>
-        <input type="number" name="rating" required min="1" max="100"/>
-        <label>Completion Status:</label>
-        <input type="checkbox" name="status" />
-        <button type="submit">Add</button>
-    </form>
+    <nav>
+        <a class="link" href="/index">Game List</a>
+    </nav>
+    <div id="title">
+        <h1>Add Video Game</h1>
+    </div>
+        <form class="flex-container" action="/index/new" method="POST">
+            <div class="input-label-container">
+                <label>Title:</label>
+                <input type="text" name="title" required />
+            </div>
+            <div class="input-label-container">
+                <label>Platform:</label>
+                <input type="text" name="platform" required />
+            </div>
+            <div class="input-label-container">
+                <label>Genre:</label>
+                <input type="text" name="genre" required />
+            </div>
+            <div class="input-label-container">
+                <label>Release:</label>
+                <input type="number" name="release" required  min="1980" max="2024"/>
+            </div>
+            <div class="input-label-container">
+                <label>Publisher:</label>
+                <input type="text" name="publisher" required />
+            </div>
+            <div class="input-label-container">
+                <label>Rating:</label>
+                <input type="number" name="rating" required min="1" max="100"/>
+            </div>
+            <div class="input-label-container">
+                <label>Completion Status:</label>
+                <input type="checkbox" name="status" />
+            </div>
+            <button class="link" id="add-btn" type="submit">Add</button>
+
+        </form>
 </body>
 </html>

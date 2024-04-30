@@ -1,3 +1,5 @@
+//MEN Stack CRUD App - Pair Programming: Scott Kunian & Chris Jimenez
+
 //Import
 const express = require("express");
 const app = express();
@@ -31,16 +33,15 @@ app.get("/", (req, res)=>{
 })
     //Index Show Page
 app.get("/index", async (req, res)=>{
-    const statusComplete = req.query.status === "true";
-    const statusNotComplete = req.query.status === "true";
     let filter = {};
+    const statusComplete = req.query.statusComplete === "true";
+    const statusNotComplete = req.query.statusNotComplete === "true";
     if(statusComplete){
-        filter = {status: true};
+        filter.status = true;
     }else if(statusNotComplete){
-        filter = {status: true};
+        filter.status = false;
     }
-    console.log(statusComplete)
-    const videoGameList = await VideoGame.find(filter);
+    const videoGameList = await VideoGame.find(filter).sort({rating: "desc"}); 
     res.render("index.ejs", {
         videoGameList,
         statusComplete,
@@ -55,6 +56,8 @@ app.get("/index/new", (req, res)=>{
 app.post("/index/new", async (req, res)=>{
     if(req.body.status){
         req.body.status = true;
+    }else{
+        req.body.status = false;
     }
     await VideoGame.create(req.body);
     res.redirect("/index");

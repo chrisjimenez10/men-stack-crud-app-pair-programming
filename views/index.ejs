@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <link rel="stylesheet" href="./css/show.css" />
 </head>
 <body>
     <nav>
-        <% if(statusComplete){ %>
-            <a href="/index">All Games</a>
-            <a href="/index?statusComplete=true">Completed Games</a>
-       <% }else if(statusNotComplete){ %>
-            <a href="/index">All Games</a>
-            <a href="/index?statusNotComplete=true">In Progress</a>
-      <% }else { %>
-            <a href="/index?statusComplete=true">Completed Games</a>
-            <a href="/index?statusNotComplete=true">In Progress</a>
-     <% } %>
+        <a class="link" href="/">Home Page</a>
+        <a class="link" href="/index">All Games</a>
+        <a class="link" href="/index?statusComplete=true">Completed Games</a>
+        <a class="link" href="/index?statusNotComplete=true">In Progress Games</a>
     </nav>
-    <h1>Game List</h1>
+    <div id="title">
+        <h1>Game List</h1>
+    </div>
     <ul>
         <% videoGameList.forEach(videoGame => { %>
             <li><a href="/index/<%= videoGame._id %>"><%= videoGame.title %></a></li>
         <% }) %>
     </ul>
-    <a href="/index/new"><button>Add Game</button></a>
+    <a href="/index/new"><button class="link">Add Game</button></a>
 </body>
 </html>

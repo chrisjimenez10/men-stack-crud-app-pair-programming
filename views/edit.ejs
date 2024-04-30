@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/show.css" />
 </head>
 <body>
     <nav>
-        <a href="/index/<%= foundVideoGame._id %>">Back to Game</a>
+        <a class="link" href="/index/<%= foundVideoGame._id %>">Back to Game</a>
     </nav>
-    <h1>Edit Video Game</h1>
-    <form action="/index/<%= foundVideoGame._id %>?_method=PUT" method="POST">
-        <label>Title:</label>
-        <input type="text" name="title" required value="<%= foundVideoGame.title %>" />
-        <label>Platform:</label>
-        <input type="text" name="platform" required value="<%= foundVideoGame.platform %>" />
-        <label>Genre:</label>
-        <input type="text" name="genre" required value="<%= foundVideoGame.genre %>" />
-        <label>Release:</label>
-        <input type="number" name="release" required value="<%= foundVideoGame.release %>" />
-        <label>Publisher:</label>
-        <input type="text" name="publisher" required value="<%= foundVideoGame.publisher %>" />
-        <label>Rating:</label>
-        <input type="number" name="rating" required min="1" max="100" value="<%= foundVideoGame.rating %>" />
-        <label>Completion Status:</label>
-        <input type="checkbox" name="status" <%= foundVideoGame.status ? "checked" : "" %> />
-        <button type="submit">Edit</button>
+    <div id="title">
+        <h1>Edit Video Game</h1>
+    </div>
+    <form class="flex-container" action="/index/<%= foundVideoGame._id %>?_method=PUT" method="POST">
+        <div class="input-label-container">
+            <label>Title:</label>
+            <input type="text" name="title" required value="<%= foundVideoGame.title %>" />
+        </div>
+        <div class="input-label-container">
+            <label>Platform:</label>
+            <input type="text" name="platform" required value="<%= foundVideoGame.platform %>" />
+        </div>
+        <div class="input-label-container">
+            <label>Genre:</label>
+            <input type="text" name="genre" required value="<%= foundVideoGame.genre %>" />
+        </div>   
+        <div class="input-label-container">  
+            <label>Release:</label>
+            <input type="number" name="release" required value="<%= foundVideoGame.release %>" min="1980" max="2024" />
+        </div>
+        <div class="input-label-container">   
+            <label>Publisher:</label>
+            <input type="text" name="publisher" required value="<%= foundVideoGame.publisher %>" />
+        </div>
+        <div class="input-label-container">    
+            <label>Rating:</label>
+            <input type="number" name="rating" required min="1" max="100" value="<%= foundVideoGame.rating %>" />
+        </div>   
+        <div class="input-label-container">    
+            <label>Completion Status:</label>
+            <input type="checkbox" name="status" <%= foundVideoGame.status ? "checked" : "" %> />
+        </div>
+        <button class="link" id="add-btn" type="submit">Edit</button>
     </form>
 </body>
 </html>
