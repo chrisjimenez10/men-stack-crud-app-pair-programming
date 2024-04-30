@@ -16,7 +16,7 @@ mongoose.connection.on("connected", ()=>{
 //Middelware
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
-// app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(express.urlencoded({extended:false}));
 
 //Start Server
@@ -31,9 +31,20 @@ app.get("/", (req, res)=>{
 })
     //Index Show Page
 app.get("/index", async (req, res)=>{
-    const videoGameList = await VideoGame.find();
+    const statusComplete = req.query.status === "true";
+    const statusNotComplete = req.query.status === "true";
+    let filter = {};
+    if(statusComplete){
+        filter = {status: true};
+    }else if(statusNotComplete){
+        filter = {status: true};
+    }
+    console.log(statusComplete)
+    const videoGameList = await VideoGame.find(filter);
     res.render("index.ejs", {
-        videoGameList
+        videoGameList,
+        statusComplete,
+        statusNotComplete
     })
 })
     //Add Video Game Show Page
